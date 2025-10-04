@@ -1,4 +1,4 @@
-/* ========== GLOBAL STYLES ========== */
+/* ====== GLOBAL STYLES ====== */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #111;
   background: #fff;
   line-height: 1.6;
@@ -23,7 +23,70 @@ img {
   margin: 0 auto;
 }
 
-/* ========== HERO SECTION ========== */
+/* ====== HEADER ====== */
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+}
+
+.logo p {
+  font-size: 12px;
+  color: #666;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #e63946;
+}
+
+.quote-btn {
+  background: #e63946;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ====== HERO SECTION ====== */
 .hero {
   background: #ffe9ec;
   padding: 80px 0;
@@ -122,7 +185,7 @@ img {
   width: 40px;
 }
 
-/* ========== FEATURES SECTION ========== */
+/* ====== FEATURES SECTION ====== */
 .features {
   padding: 100px 0;
   background: #fff;
@@ -175,7 +238,7 @@ img {
   font-size: 15px;
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -188,6 +251,10 @@ img {
 
   .hero-image {
     order: 1;
+  }
+
+  .nav-links {
+    display: none; /* Hide menu on smaller screens (use hamburger if needed) */
   }
 }
 
@@ -204,4 +271,5 @@ img {
     padding: 10px 20px;
   }
 }
+
 
