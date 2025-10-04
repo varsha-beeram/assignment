@@ -4,11 +4,12 @@
     --color-pink-bg: #fef1f3; /* Lightest pink for hero section */
     --color-text-main: #333333; /* Main dark text (h1, h2) */
     --color-text-light: #555555; /* Lighter grey text (p, nav links) */
-    --color-primary-red: #e91e63; /* Main highlight and button color */
-    --color-darker-red: #d1124d; /* Contact Us button color */
+    --color-primary-red: #e91e63; /* Main highlight and "Get A Quote" button color */
+    --color-darker-red: #d1124d; /* "CONTACT US" button color and primary border */
     --color-star-yellow: #ff9900; /* Star rating color */
     --color-card-border: #f0f0f0; /* Border for feature cards */
     --color-light-gray-bg: #f9f9f9; /* Background for "What You Get" tag */
+    --color-hero-border: #e0f0ff; /* Light blueish border around hero */
 
     /* Fonts linked in your HTML */
     --font-heading: 'Figtree', sans-serif;
@@ -26,7 +27,8 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: var(--color-text-main);
-    overflow-x: hidden;
+    /* Crucial fix for the white bar/scroll issue caused by the skewed image container */
+    overflow-x: hidden; 
 }
 
 .container {
@@ -45,11 +47,11 @@ h1, h2, h3 {
 
 .btn {
     display: inline-block;
-    padding: 12px 25px; /* Adjusted padding */
+    padding: 12px 25px; 
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    border-radius: 50px; /* Highly rounded buttons for packages/contact */
+    border-radius: 50px; 
     text-transform: uppercase;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -57,8 +59,9 @@ h1, h2, h3 {
     border: 2px solid transparent;
 }
 
-.btn-primary {
-    background-color: var(--color-darker-red); /* Darker red for CONTACT US */
+/* CORRECTED: CONTACT US Button (Solid Red) */
+.btn-primary { 
+    background-color: var(--color-darker-red); 
     color: var(--color-white);
     border: 2px solid var(--color-darker-red);
 }
@@ -68,12 +71,13 @@ h1, h2, h3 {
     border-color: var(--color-primary-red);
 }
 
-.btn-secondary-outline {
-    background-color: transparent;
+/* CORRECTED: RESUME PACKAGES Button (White w/ Red Outline) */
+.btn-secondary-outline { 
+    background-color: var(--color-white);
     color: var(--color-darker-red);
     border: 2px solid var(--color-darker-red);
     padding: 12px 25px; 
-    border-radius: 50px; /* Fully rounded */
+    border-radius: 50px; 
 }
 
 .btn-secondary-outline:hover {
@@ -85,7 +89,7 @@ h1, h2, h3 {
 
 .header {
     background-color: var(--color-pink-bg);
-    border-bottom: 2px solid #e0f0ff; /* Subtle blue border at the bottom */
+    border-bottom: 2px solid var(--color-hero-border); 
 }
 
 .header-content {
@@ -99,16 +103,14 @@ h1, h2, h3 {
 .logo {
     display: flex;
     align-items: center;
-    /* Space between logo and nav on desktop */
     flex-shrink: 0;
 }
 
 .logo-icon-complex {
-    /* Recreating the complex red logo using CSS/SVG */
     width: 30px;
     height: 30px;
     margin-right: 5px;
-    /* Using a mask/background to draw the complex logo */
+    /* Recreating the complex red logo using CSS/SVG */
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' style='fill:transparent; stroke:%23e91e63; stroke-width: 5px; transform: rotate(15deg);'%3E%3Cpath d='M50 0 C75 0, 100 25, 100 50 C100 75, 75 100, 50 100 C25 100, 0 75, 0 50 C0 25, 25 0, 50 0 Z' /%3E%3Ccircle cx='50' cy='50' r='10' fill='%23e91e63'/%3E%3C/svg%3E") no-repeat center center / contain;
 }
 
@@ -126,7 +128,8 @@ h1, h2, h3 {
     font-weight: 400;
     color: var(--color-text-light);
     text-transform: uppercase;
-    align-self: flex-end; /* Aligns tagline to the bottom of the line */
+    /* CORRECTED: Alignment fix for tagline */
+    align-self: flex-end; 
     margin-bottom: 2px;
 }
 
@@ -158,16 +161,17 @@ h1, h2, h3 {
     background-color: var(--color-primary-red);
     color: var(--color-white);
     padding: 10px 20px;
-    border-radius: 5px; /* Square edges for this button */
+    border-radius: 5px; 
     font-size: 13px;
     text-transform: uppercase;
+    border: none;
 }
 .btn-quote:hover {
     background-color: var(--color-darker-red);
 }
 
 .menu-toggle {
-    display: none; /* Hide on desktop */
+    display: none; 
 }
 
 /* --- 2. Hero Section (Hero-section-2) --- */
@@ -176,7 +180,7 @@ h1, h2, h3 {
     background-color: var(--color-pink-bg);
     position: relative;
     padding-bottom: 80px;
-    border-bottom: 2px solid #e0f0ff;
+    border-bottom: 2px solid var(--color-hero-border);
 }
 
 .hero-container-grid {
@@ -202,15 +206,14 @@ h1, h2, h3 {
 
 .highlight-text {
     color: var(--color-primary-red);
-    /* No underline here, the underline is handled by .highlight-underline */
     display: inline-block;
 }
 
 .highlight-underline {
     position: relative;
-    width: 280px; /* Width must match the text "Deserves A Yes" */
+    width: 320px; /* Adjusted width slightly to better fit the text line length */
     height: 5px;
-    margin-top: -30px; /* Pull the underline up to sit right under the text */
+    margin-top: -30px; 
     margin-bottom: 30px;
 }
 
@@ -298,7 +301,6 @@ h1, h2, h3 {
     flex-direction: column;
     align-items: center;
     width: 170px;
-    /* Position fine-tuning */
     transform: translateX(-40px);
 }
 
@@ -308,6 +310,7 @@ h1, h2, h3 {
     color: var(--color-primary-red);
     line-height: 1;
     margin-bottom: 5px;
+    font-family: var(--font-stat);
 }
 
 .stars-group i {
@@ -331,21 +334,19 @@ h1, h2, h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Position fine-tuning */
     transform: translateX(30px);
 }
 
 .count-icon-placeholder {
     width: 24px;
     height: 24px;
-    /* Placeholder icon styling for the mortarboard */
+    margin-bottom: 5px;
 }
 .count-icon-placeholder img {
-    /* Since you used /happy.png for the icon, we style it to look like the mortarboard */
+    /* Using the standard graduation cap icon styling */
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath fill='%23e91e63' d='M500.3 35.7C501.9 37.8 502.5 40.5 502.1 43.1L480 184H424L452.3 84.8C454.3 78.4 449.6 71.9 442.8 71.9H384V16c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v56H120c-8.8 0-16 7.2-16 16v16H48c-13.3 0-24 10.7-24 24V288c0 13.3 10.7 24 24 24H352c13.3 0 24-10.7 24-24v-64H128V144h240v16c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16V144h240c13.3 0 24-10.7 24-24V48c0-8.8-7.2-16-16-16h-48V16c0-8.8-7.2-16-16-16h-48zM48 352H352v128c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V352z'/%3E%3C/svg%3E");
     width: 28px;
     height: 28px;
-    margin-bottom: 5px;
 }
 
 .counter-value {
@@ -424,7 +425,7 @@ h1, h2, h3 {
 .card-icon {
     width: 100%;
     height: auto;
-    max-width: 150px; /* Max size for the illustration images */
+    max-width: 150px; 
     margin-bottom: 20px;
     opacity: 0.9;
 }
@@ -443,7 +444,7 @@ h1, h2, h3 {
 }
 
 /* --- Mobile Menu (Hidden by Default) --- */
-
+/* (Keeping your original mobile menu code as provided) */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -501,6 +502,7 @@ h1, h2, h3 {
     display: block;
     padding: 10px 0;
 }
+/* End of Mobile Menu code */
 
 /* --- Media Queries (Making it Responsive) --- */
 
@@ -526,7 +528,7 @@ h1, h2, h3 {
     .hero-text-column {
         max-width: 100%;
         margin-bottom: 30px;
-        order: 2; /* Move text below the image on mobile */
+        order: 2;
     }
 
     .hero-image-stat-column {
@@ -534,11 +536,10 @@ h1, h2, h3 {
         width: 100%;
         height: 400px;
         margin-bottom: 30px;
-        order: 1; /* Move image to the top on mobile */
+        order: 1;
     }
     
     .hero-image-stat-column::before {
-        /* Remove the complex skew on mobile */
         transform: none; 
         background: linear-gradient(to bottom, #fceef0 0%, #fef1f3 100%);
     }
@@ -550,7 +551,7 @@ h1, h2, h3 {
     }
     
     .stats-overlay {
-        position: static; /* Let the stats flow normally on mobile */
+        position: static; 
         transform: none;
     }
     
@@ -565,8 +566,9 @@ h1, h2, h3 {
     }
     
     .highlight-underline {
-        width: 200px; /* Adjust width for smaller font */
+        width: 200px; 
         margin-top: -20px;
+        margin: -20px auto 30px; /* Center the underline on mobile */
     }
     
     .hero-text p {
@@ -577,15 +579,16 @@ h1, h2, h3 {
         height: 300px;
     }
     
+    /* Re-position stats closer to the image on smaller screens */
     .rating-box-container {
-        right: 10px;
-        bottom: 100px;
+        right: 10%;
+        bottom: 50%;
         transform: translateX(0);
     }
     
     .resume-count-box {
-        right: 20px;
-        bottom: 50px;
+        right: 5%;
+        bottom: 20%;
         transform: translateX(0);
     }
     
