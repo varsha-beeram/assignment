@@ -1,0 +1,759 @@
+/* --- Figma Variables & Global Resets --- */
+:root {
+  --primary-color: #fa1239; /* ColorPallet/Primary/primary-500 */
+  --secondary-bg-start: #ffe7eb; /* Hero Gradient start */
+  --secondary-bg-end: #ffbfca; /* Hero Gradient end */
+  --text-dark: #000000; /* Neutral-500 */
+  --text-light: #666666; /* Used for lighter body text */
+  --star-color: #ffab00;
+  --rating-value-color: #1cb098; /* Color for 4.9 value */
+  --header-text-color: #282828; /* Header nav links */
+  --container-max-width: 1240px; /* 1440px - (100px * 2) padding */
+  --header-height: 100px;
+  --font-figtree: "Figtree", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+/* Global Box Sizing and Font Smoothing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-figtree);
+  color: var(--text-dark);
+  line-height: 1.5;
+  background-color: white;
+  font-size: 16px;
+}
+
+/* Centralized Container for Content Width */
+.container {
+  width: 90%; /* Default for responsiveness */
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* --- Buttons (Based on Figma specs) --- */
+.btn {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 12px rgba(250, 18, 57, 0.58);
+}
+.btn-primary {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+.btn-secondary-outline {
+  background: #ffffff;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: none; /* Only primary has shadow in Figma CTA group */
+}
+.btn-secondary-outline:hover {
+  background: rgba(250, 18, 57, 0.1);
+}
+
+/* --- Header (Frame 33) --- */
+.header {
+  height: var(--header-height);
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+/* Logo (Group 155) */
+.logo {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  padding-left: 30px; /* Space for the logo icon */
+}
+.logo-icon-complex {
+  /* Placeholder for complex vector in Figma */
+  position: absolute;
+  width: 25px; /* Based on Figma's visual scale */
+  height: 25px;
+  left: 0;
+  bottom: 5px; /* Adjust to align with text baseline */
+  background: var(--primary-color);
+}
+.logo-text {
+  font-size: 1.5rem; /* ~24px */
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-right: 0.25rem;
+}
+.logo-tagline {
+  font-size: 0.75rem; /* ~12px */
+  font-weight: 500;
+  color: var(--text-dark);
+  opacity: 0.6; /* Slightly muted */
+}
+/* Desktop Navigation Menu (Frame 251) */
+.nav-menu {
+  display: none; /* Hidden on mobile */
+  align-items: center;
+  gap: 24px;
+}
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+.nav-list a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--header-text-color);
+  padding: 10px 0;
+  transition: color 0.2s;
+}
+.nav-list a:hover {
+  color: var(--primary-color);
+}
+/* Mobile Menu Toggle */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-dark);
+  display: block; /* Visible on mobile */
+}
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  justify-content: flex-end;
+}
+.mobile-menu-overlay.open {
+  display: flex;
+}
+.mobile-menu {
+  width: 75%;
+  max-width: 375px;
+  background-color: white;
+  padding: 30px;
+  position: relative;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+.mobile-menu-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+}
+.mobile-nav-list {
+  list-style: none;
+  padding-top: 50px;
+}
+.mobile-nav-list li {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.mobile-nav-list a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  display: block;
+  font-size: 1.1rem;
+}
+.mobile-nav-list li:last-child {
+  border-bottom: none;
+}
+.contact-btn {
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* --- Hero Section (HeroSection2) --- */
+.hero-section-2 {
+  background: linear-gradient(
+    261.18deg,
+    var(--secondary-bg-start) -0.46%,
+    var(--secondary-bg-end) 100.67%
+  );
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden; /* Ensures blobs don't overflow */
+}
+.hero-container-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+/* Hero Text Column (Frame 249) */
+.hero-text-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 38px; /* Figma gap */
+  position: relative;
+  z-index: 10;
+}
+.hero-title {
+  font-family: var(--font-figtree);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: capitalize;
+  color: var(--text-dark);
+}
+.highlight-text {
+  color: var(--primary-color);
+}
+/* Red Underline (Group 4) */
+.highlight-underline {
+  position: relative;
+  width: 100%;
+  max-width: 363px; /* Constrain based on Figma group width */
+  height: 17px; /* Group height */
+  margin: 0 auto;
+  margin-top: -20px; /* Pull into the title area as seen in Figma */
+  margin-bottom: 10px;
+}
+.highlight-underline .line-1 {
+  /* Vector 1 */
+  position: absolute;
+  width: 70%; /* 269px of 363px */
+  height: 3px; /* Border is 3px in Figma */
+  border: 3px solid var(--primary-color);
+  left: 15%; /* (48px / 363px) * 100% */
+  top: 0;
+}
+.highlight-underline .line-2 {
+  /* Vector 2 */
+  position: absolute;
+  width: 90%; /* 363px of 363px, but shorter */
+  height: 3px;
+  border: 3px solid var(--primary-color);
+  left: 5%; /* (0px from Figma, but need to nudge for visual balance) */
+  top: 8px; /* Offset from Figma */
+}
+.hero-description {
+  font-family: var(--font-figtree);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2.125; /* 34px on 16px */
+  text-transform: capitalize;
+  max-width: 485px;
+  color: var(--text-dark);
+}
+.cta-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* Hero Image and Stats Column (Group 12) */
+.hero-image-stat-column {
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Constraint width on mobile for visual appeal */
+  min-height: 400px; /* Ensures space for image and floating elements */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+}
+/* Background Blobs (Ellipse 6 & 5) */
+.hero-bg-blobs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5; /* Reduced opacity for mobile */
+}
+.blob-outer {
+  /* Ellipse 6 */
+  position: absolute;
+  width: 80%; /* Responsive sizing */
+  height: 80%;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    55.26% 55.26% at 50% 44.74%,
+    #ffe4e9 0%,
+    #ffcbd4 100%
+  );
+  border-radius: 50%;
+  z-index: 1;
+}
+.blob-inner {
+  /* Ellipse 5 */
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  right: 15%; /* Adjust for nested blob appearance */
+  bottom: 15%;
+  background: radial-gradient(50% 50% at 50% 50%, #ffe2e7 0%, #fecdd5 100%);
+  border-radius: 50%;
+  z-index: 2;
+}
+/* Portrait Image (portrait-happy-young-woman...) */
+.hero-portrait-image {
+  position: absolute;
+  width: 85%; /* Responsive sizing */
+  max-width: 506px;
+  height: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  object-fit: contain;
+}
+/* Floating Stat Boxes (Mobile Default - stacked/centered) */
+.rating-box-container,
+.resume-count-box {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 80%; /* Responsive width */
+  margin-top: 1rem; /* Spacing when stacked */
+  position: relative; /* Stacks these elements in the flow */
+  backdrop-filter: blur(5px); /* Less blur on mobile for performance */
+}
+.rating-box-container {
+  /* Frame 239 - left top */
+  padding: 15px;
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+  align-items: center;
+  gap: 5px;
+}
+.rating-value {
+  /* 4.9 */
+  font-family: var(--font-inter);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--rating-value-color);
+}
+.stars-group {
+  display: flex;
+  gap: 4px;
+}
+.stars-group i {
+  color: var(--star-color);
+}
+.rating-label-lg {
+  /* Instructor Rating */
+  font-family: var(--font-figtree);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.resume-count-box {
+  /* Frame 239 - right bottom */
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.count-icon-placeholder {
+  /* Rectangle 16 */
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-radius: 50%; /* Figma shows a rectangle, but usually an icon would be centered in a circle/square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.count-icon-placeholder img {
+  /* Mortarboard */
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+.counter-value {
+  /* 260+ */
+  font-family: var(--font-figtree);
+  font-size: 1.875rem; /* 30px */
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+.counter-label {
+  /* Online Resume Created */
+  font-family: var(--font-figtree);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+/* --- Services Section --- */
+.services-section {
+  padding: 6rem 0; /* Responsive padding */
+  background-color: #ffffff;
+  text-align: center;
+}
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-tag {
+  /* What You Get */
+  font-family: var(--font-figtree);
+  color: var(--text-dark);
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+.section-title {
+  /* You're Not Just Another Applicant... */
+  font-family: var(--font-figtree);
+  font-size: 1.8rem; /* Responsive size */
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: capitalize;
+  color: var(--text-dark);
+  margin-bottom: 50px;
+}
+.highlight-applicant {
+  color: var(--primary-color);
+}
+.services-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  width: 100%;
+  max-width: 1240px;
+}
+.service-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-family: var(--font-figtree);
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.card-description {
+  font-family: var(--font-figtree);
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* --- Responsive Media Queries --- */
+
+/* Tablet/Smaller Desktop (e.g., 768px and up) */
+@media (min-width: 768px) {
+  /* Header */
+  .nav-menu {
+    display: flex;
+  }
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero-section-2 {
+    padding: 5rem 0;
+  }
+  .hero-container-grid {
+    flex-direction: row; /* Side-by-side */
+    gap: 5rem;
+    align-items: flex-start;
+  }
+  .hero-text-column {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 40px; /* Adjust alignment with image */
+  }
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  .cta-group {
+    justify-content: flex-start;
+  }
+  .hero-image-stat-column {
+    flex: 1;
+    max-width: 600px;
+    min-height: 600px;
+  }
+  /* Floating stat boxes switch to row layout and absolute positioning */
+  .rating-box-container,
+  .resume-count-box {
+    position: absolute; /* Enable absolute positioning relative to hero-image-stat-column */
+    margin-top: 0; /* Reset mobile margins */
+    backdrop-filter: blur(15px); /* Increased blur for desktop */
+  }
+  .rating-box-container {
+    top: 60%;
+    left: -15%; /* Overlap to the left */
+    width: 350px;
+    padding: 20px 15px;
+    flex-direction: row;
+    gap: 20px;
+  }
+  .resume-count-box {
+    top: 80%;
+    right: -10%; /* Overlap to the right */
+    left: auto; /* Reset left position */
+    width: 270px;
+    padding: 30px;
+    gap: 20px;
+  }
+
+  /* Services Section */
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 40px;
+  }
+}
+
+/* Larger Desktop (e.g., 1024px to 1439px) */
+@media (min-width: 1024px) {
+  .hero-section-2 {
+    padding: 8rem 0;
+  }
+  .hero-text-column {
+    padding-top: 20px;
+  }
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  /* Services Section */
+  .section-title {
+    font-size: 40px;
+  }
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+  }
+  .service-card {
+    padding: 40px 20px;
+  }
+}
+
+/* --- Figma 1440px Exact Simulation (Pixel-Perfect Positioning) --- */
+/* This media query applies exact dimensions and absolute positioning for the 1440px desktop design. */
+@media (min-width: 1440px) {
+  .container {
+    width: var(--container-max-width); /* Fixed width for 1440px layout */
+  }
+
+  /* Header */
+  .header-content {
+    padding: 0 100px; /* Figma's horizontal padding */
+    gap: 70px; /* Gap between logo and nav */
+  }
+  .logo {
+    position: absolute; /* Position logo absolutely based on Figma */
+    left: 100px;
+    top: 21px;
+    padding-left: 0; /* Handled by absolute positioning */
+    width: 231.17px; /* Figma's Group 155 width */
+  }
+  .logo-icon-complex {
+    /* These values are highly specific to the vector SVG; using placeholder logic */
+    left: 6.94%;
+    right: 88.08%;
+    top: 21%;
+    bottom: 21%;
+    width: 25px; /* Adjust based on your actual SVG icon size */
+    height: 25px;
+    background-color: var(--primary-color);
+  }
+  .logo-text {
+    position: absolute;
+    left: 12.72%; /* Based on Figma Group 154 position relative to the overall 1440px width */
+    top: 26.38px;
+    font-size: 24px;
+    margin-right: 0;
+  }
+  .logo-tagline {
+    position: absolute;
+    left: 12.69%;
+    top: 52.94%;
+    font-size: 12px;
+  }
+  .nav-menu {
+    position: absolute; /* Position nav menu absolutely */
+    left: 512px; /* Roughly centered based on Figma */
+    top: 29px;
+    width: 519px; /* Figma's Frame 251 width */
+    justify-content: center; /* Center items within its fixed width */
+  }
+  .btn-quote {
+    position: absolute; /* Position button absolutely */
+    right: 100px; /* Based on Figma's right alignment */
+    top: 27px;
+    width: 147px; /* Figma's Button width */
+  }
+
+  /* Hero Section */
+  .hero-section-2 {
+    height: 909px;
+    padding: 0;
+  }
+  .hero-container-grid {
+    height: 909px;
+    padding-top: 0; /* Remove padding, content is absolutely positioned */
+    position: relative; /* Crucial for child absolute positioning */
+    width: 100%; /* Ensure it spans the full width */
+    max-width: none; /* Let it stretch */
+  }
+  /* Text Column (Frame 249) */
+  .hero-text-column {
+    width: 620px;
+    height: 510px;
+    padding-top: 0;
+    position: absolute;
+    left: 100px; /* Figma value */
+    top: 228px; /* Figma value */
+    align-items: flex-start;
+    text-align: left;
+    gap: 38px;
+  }
+  .hero-title {
+    font-size: 64px;
+    line-height: 78px;
+  }
+  .hero-description {
+    width: 485px; /* Figma value */
+  }
+  .highlight-underline {
+    margin-top: 0; /* Reset */
+    margin-bottom: 0;
+    position: absolute; /* Absolute within text column */
+    width: 363px;
+    height: 17px;
+    left: 0;
+    top: 250px; /* Roughly under the title */
+  }
+  .cta-group {
+    justify-content: flex-start;
+  }
+  /* Image Column (Group 12) */
+  .hero-image-stat-column {
+    position: absolute;
+    width: 633.87px; /* Figma value */
+    height: 727.37px; /* Figma value */
+    left: 766px; /* Figma value */
+    top: 190px; /* Figma value */
+    max-width: none;
+    min-height: 0;
+  }
+  /* Background Blobs (relative to hero-image-stat-column) */
+  .hero-bg-blobs {
+    width: 100%;
+    height: 100%;
+    opacity: 1; /* Full opacity on desktop */
+  }
+  .blob-outer {
+    /* Ellipse 6 */
+    width: 633.87px;
+    height: 633.88px;
+    right: 0;
+    bottom: 0; /* Aligned to the bottom of its parent */
+  }
+  .blob-inner {
+    /* Ellipse 5 */
+    width: 476.45px;
+    height: 476.45px;
+    left: 80px; /* 845.23 - 766 = 79.23px (approx 80px relative to parent) */
+    top: 171.49px; /* 361.68 - 190 = 171.68px */
+    right: auto;
+    bottom: auto;
+  }
+  /* Portrait Image (relative to hero-image-stat-column) */
+  .hero-portrait-image {
+    width: 506px;
+    height: 727px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+  /* Floating Stat Boxes (Absolute relative to hero-section-2) */
+  .rating-box-container {
+    /* Frame 239 - top left floating box */
+    position: absolute;
+    left: 729px; /* Figma value */
+    top: 585px; /* Figma value */
+    width: 350px;
+    padding: 20px 15px;
+    backdrop-filter: blur(45.5px); /* Figma blur value */
+  }
+  .resume-count-box {
+    /* Frame 239 - bottom right floating box */
+    position: absolute;
+    left: 1129px; /* Figma value */
+    top: 734px; /* Figma value */
+    width: 270.66px;
+    height: 133.43px;
+    padding: 30px;
+    backdrop-filter: blur(45.5px); /* Figma blur value */
+  }
+
+  /* Services Section */
+  .services-section {
+    height: 774px; /* Figma value */
+    padding: 0;
+    display: flex;
+    align-items: center; /* Vertically center content if height is fixed */
+  }
+  .services-container {
+    /* For 1440px, the container takes the full defined width, centered */
+    max-width: var(--container-max-width);
+  }
+  .section-tag {
+    margin-top: 0; /* Reset if any top margin was added for responsiveness */
+  }
+}
